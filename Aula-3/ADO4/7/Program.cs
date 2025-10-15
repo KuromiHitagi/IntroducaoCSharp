@@ -1,4 +1,4 @@
-﻿namespace _1;
+﻿namespace _7;
 
 class Program
 {
@@ -6,24 +6,44 @@ class Program
     {
         Apresentacao();
 
-        Console.WriteLine("Digite quantos ingressos você deseja comprar de cada tipo: Inteira e depois Meia");
-        int Inteira = Convert.ToInt32(Console.ReadLine());
-        int Meia = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Digite sua temperatura em Celsius: ");
+        double Temperatura = Convert.ToDouble(Console.ReadLine());
 
-        double Resultado = Calculo(Inteira, Meia);
+        string Resultado = Verificar(Temperatura);
 
-        Console.WriteLine($"O valor total a ser pago é de: R$ {Resultado.ToString("F2")}");
+        Console.WriteLine($"A situação para sua temperatura é: {Resultado}");
     }
 
     public static void Apresentacao()
     {
         Console.WriteLine("\n-----------------------------------------------------------");
-        Console.WriteLine("------------------Programa do Ingresso---------------------");
+        Console.WriteLine("------------------Programa da Temperatura---------------------");
         Console.WriteLine("-----------------------------------------------------------\n");
     }
 
-    public static double Calculo(int Inteira, int Meia)
+    public static string Verificar(double Temperatura)
     {
-        return (Inteira * 28.5) + (Meia * 14.25);
+        string RES = "";
+        if (Temperatura >= 41)
+        {
+            RES = "Hipertermia";
+        }
+        else if (Temperatura >= 39.6 && Temperatura < 41)
+        {
+            RES = "Febre Alta";
+        }
+        else if (Temperatura >= 37.6 && Temperatura < 39.6)
+        {
+            RES = "Febre";
+        }
+        else if (Temperatura >= 36 && Temperatura < 37.6)
+        {
+            RES = "Normal";
+        }
+        else if (Temperatura < 36)
+        {
+            RES = "Hipotermia";
+        }
+        return RES;
     }
 }
